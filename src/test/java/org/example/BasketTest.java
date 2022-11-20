@@ -35,10 +35,12 @@ class BasketTest {
     }
 
     @Test
-    @DisplayName("Тестирование отрицательного значения в количестве товара, с верным количеством")
-    void addToCartErrorAIllegalArgumentException1() {
-        assertThrows(IllegalArgumentException.class, () -> basket.addToCart(2, 3));
-        System.out.println("Тест выполнился.");
+    @DisplayName("Тестирование добавленния количества товара дважды")
+    void addToCartDoubleAddTest() {
+        basket.addToCart(1, 10);
+        basket.addToCart(2, 10);
+        basket.addToCart(1, 10);
+        Assertions.assertEquals(20, basket.amountOfProductsInBasket[1]);
     }
 
 }
